@@ -7,7 +7,7 @@
 	</style>
 </HEAD>
 <BODY>
-<table cellspacing=0>
+<table border=1 cellspacing=0>
 <tr>
 	<td>Nom</td><td>Age</td>
 </tr>
