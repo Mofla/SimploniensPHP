@@ -7,28 +7,38 @@
 	</style>
 </HEAD>
 <BODY>
+<!-- Création du tableau-->
 <table cellspacing=0>
 <tr>
 	<td>Nom</td><td>Age</td>
 </tr>
+<!-- Début du code php -->
 <?php
-	// 
+	// ouverture et stockage du xml dans une var
 	$xml = simplexml_load_file('classe-simploniens.xml');
-	//print_r($xml); 
+	// création d'un tableau vide pour stocker les données pour ensuite pouvoir les 'sort'
 	$tableau = [];
 	foreach($xml as $simplonien){
+		// récupération de la date de naissance
 		$date = $simplonien->date_naissance;
+		// transformation en âge avec un calcul
 		$age = floor((time() - strtotime($date)) / 3600 / 24 / 365);
-		//echo '<tr><td>'.$simplonien->nom.' '.$simplonien->prenom.'</td><td>'.$age.' ans</td></tr>';
+		// fusion des valeurs nom et prenom du xml pour faire une variable str du genre "Nom Prénom"
 		$a = '<b>'.$simplonien->nom.'</b> '.$simplonien->prenom;
+		// transformation de la variable age en str avec ajout du ' ans'
 		$b = $age.' ans';
+		// ajout des informations dans le tableau
 		$tableau[$a] = $b;
 	};
+	// on 'sort' selon l'age, du plus jeune au plus vieux
 	asort($tableau);
+	// on affiche le tableau final
 	foreach($tableau as $key => $value){
-		echo '<tr><td>'.$key.'</td><td>'.$tableau[$key].'</td></tr>';
+		
+echo '<tr><td>'.$key.'</td><td>'.$tableau[$key].'</td></tr>';
 	};
 ?>
+<!-- Fin du code php -->
 </table>
 </BODY>
 </HTML>

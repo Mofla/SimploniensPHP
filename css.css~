@@ -20,7 +20,7 @@ tr td:nth-child(2){
 	border-right:none;
 }
 
-tr td:last-child{
+table:nth-last-child(1){
 	border:none;
 }
 
